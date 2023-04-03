@@ -1,12 +1,12 @@
 .bgLogin {
-    background-image: url("../../assets/img/bg-login.png");
+    background: url("../../assets/img/bg-login.png") no-repeat left top / cover;
     width: 100%;
     height: 100vh;
     display: flex;
 }
 
 .loginSideBar {
-    background: #538EC2;
+    background: #538EC2DD;
     max-width: 500px;
     min-height: 100vh;
     margin-left: auto;
