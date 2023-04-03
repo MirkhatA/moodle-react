@@ -1,0 +1,24 @@
+.button {
+    color: #fff;
+    border-radius: 6px;
+    border: 1px solid #ffffff80;
+
+    padding: .75rem 2.5rem;
+    margin: .5rem;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+}
+
+.button:hover {
+    box-shadow: 0 0 10px #424242;
+}
+
+.button:active{
+    background-color: #fff;
+    color: #424242;
+    border-color: transparent;
+}
