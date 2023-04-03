@@ -1,3 +1,4 @@
+import {useId} from 'react';
 import s from './Input.module.css';
 
 const Input = (props) => {
@@ -7,16 +8,20 @@ const Input = (props) => {
     value,
     onChange,
     placeholder,
+    id = useId(),
+    className,
   } = props;
 
   return (
-    <div className={s.input}>
-      {label && <label>{label}</label>}
+    <div>
+      {label && <label htmlFor={id} className={s.label}>{label}</label>}
       <input
         type={type}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        id={id}
+        className={`${s.input} ${className && className}`}
       />
     </div>
   );
