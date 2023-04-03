@@ -9,6 +9,7 @@ export const Button = (props) => {
     ...etc
   } = props;
 
+  if (!children) return null;
   return (
     <button
       id={id}
