@@ -14,7 +14,7 @@
 }
 
 .button:hover {
-    box-shadow: 0 0 10px #424242;
+    box-shadow: 0 0 10px #42424250;
 }
 
 .button:active{
