@@ -1,0 +1,20 @@
+.main{
+
+}
+
+.profileInfo{
+
+}
+
+.profileInfo :is(h1, h2, h3, h4, h5, h6, p){
+    margin: 0;
+    padding-block: .25rem;
+}
+
+.profileInfo :is(h1, h2, h3, h4, h5, h6){
+    color: #aaa;
+}
+
+.changePassword{
+    margin-top: 2rem;
+}
