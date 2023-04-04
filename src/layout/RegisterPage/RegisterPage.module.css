@@ -1,0 +1,64 @@
+.bgRegister {
+    background: url("../../assets/img/bg-login.png") no-repeat left top / cover;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.registerSideBar {
+    background: #538EC2DD;
+    max-width: 500px;
+    min-height: 100vh;
+    margin-left: auto;
+}
+
+.registerSideBar > *:first-child{
+    display: flex;
+    flex-direction: column;
+    min-height: inherit;
+}
+
+.registerSideBar h2 {
+    text-align: center;
+    color: #fff;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    margin-block: 2rem;
+}
+
+.logoImg figure {
+    margin: 0;
+}
+
+.logoImg img {
+    width: 48px;
+}
+
+.logoText h3 {
+    margin: 0;
+    line-height: 100%;
+    font-weight: 600;
+    color: #fff;
+}
+
+.buttonGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox {
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.registerForm {
+    margin-block: auto;
+    translate: 0 -10%;
+}
