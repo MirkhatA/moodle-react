@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import {HiOutlineLogout} from 'react-icons/hi';
 import {NavLink} from 'react-router-dom';
 import logo from '../../assets/img/logo.png';
@@ -8,6 +9,9 @@ export const Sidebar = (props) => {
     rows = [],
   } = props;
 
+  const [token, setToken] = useState('');
+
+  if (!token) return null;
   return (
     <aside className={s.aside}>
       <div className={`container ${s.container}`}>
