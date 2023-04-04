@@ -26,32 +26,32 @@ export const RegisterPage = () => {
             <Input
               label={'Почта'}
               type={'email'}
-              placeholder={'почта...'}
+              placeholder={'Введите почту...'}
             />
             <Input
               label={'Логин'}
               type={'text'}
-              placeholder={'логин...'}
+              placeholder={'Введите логин...'}
             />
             <Input
               label={'Имя'}
               type={'text'}
-              placeholder={'имя...'}
+              placeholder={'Введите имя...'}
             />
             <Input
               label={'Фамилия'}
               type={'text'}
-              placeholder={'фамилия...'}
+              placeholder={'Ввдеите фамилию...'}
             />
             <Input
               label={'Пароль'}
               type={'password'}
-              placeholder={'пароль...'}
+              placeholder={'Введите пароль...'}
             />
             <Input
               label={'Повторить пароль'}
               type={'password'}
-              placeholder={'повторить пароль...'}
+              placeholder={'Повторите ваш пароль...'}
             />
 
             <div className={s.buttonGroup}>
