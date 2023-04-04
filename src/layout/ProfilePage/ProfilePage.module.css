@@ -1,9 +1,10 @@
-.main{
-
+.container{
+    display: grid;
+    grid-template-columns: 1fr min-content;
 }
 
 .profileInfo{
-
+    margin-bottom: 3rem;
 }
 
 .profileInfo :is(h1, h2, h3, h4, h5, h6, p){
@@ -17,4 +18,8 @@
 
 .changePassword{
     margin-top: 2rem;
+}
+
+.calendarInfo{
+    margin-top: 1.25rem;
 }
