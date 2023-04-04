@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import s from './PageWithSidebar.module.css';
 
 export const PageWithSidebar = (props) => {
@@ -5,6 +6,9 @@ export const PageWithSidebar = (props) => {
     children,
   } = props;
 
+  const [token, setToken] = useState('');
+
+  if (!token) return children;
   return (
     <div className={s.page}>
       { children }
