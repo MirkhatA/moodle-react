@@ -1,8 +1,12 @@
 .bgLogin {
-    background: url("../../assets/img/bg-login.png") no-repeat left top / cover;
-    width: 100%;
     height: 100vh;
-    display: flex;
+    background: url("../../assets/img/image.png") no-repeat left center / cover;
+}
+
+.myVideo{
+    position: fixed;
+    inset: 0;
+    z-index: 1;
 }
 
 .loginSideBar {
@@ -10,6 +14,12 @@
     max-width: 500px;
     min-height: 100vh;
     margin-left: auto;
+
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
 
 .loginSideBar > *:first-child{
