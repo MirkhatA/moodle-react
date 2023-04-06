@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import logo from '../../assets/img/logo.png';
@@ -9,11 +9,14 @@ import {login} from '../../services/authService.js';
 
 import s from './LoginPage.module.css';
 import {setUser} from '../../services/tokenService.js';
+import {StorageContext} from '../../App.jsx';
 
-export const LoginPage = () => {
+
+export const LoginPage = (props) => {
   const [barcode, setBarcode] = useState(null);
   const [password, setPassword] = useState('');
   const [isChecked, setIsChecked] = useState(false);
+  const {currentUser, setCurrentUser} = useContext(StorageContext);
 
   const navigate = useNavigate();
 
@@ -48,6 +51,7 @@ export const LoginPage = () => {
           setBarcode('');
           setPassword('');
           setUser(res.data);
+          setCurrentUser(res.data);
         }
         if (res.data.role === 'ROLE_STUDENT') {
           authStore.setMessage('Успешная авторизация роль студента');

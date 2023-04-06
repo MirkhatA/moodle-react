@@ -1,5 +1,5 @@
 import './App.css';
-import {useState} from 'react';
+import {createContext, useState} from 'react';
 import {BiBookOpen, BiHomeAlt} from 'react-icons/bi';
 import {BsCalendarDay} from 'react-icons/bs';
 import {CgProfile} from 'react-icons/cg';
@@ -38,12 +38,17 @@ const rows = [
   },
 ];
 
+export const StorageContext = createContext({});
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
+
   return (
-    <PageWithSidebar>
-      <Sidebar rows={rows}/>
-      <AppRoutes/>
-    </PageWithSidebar>
+    <StorageContext.Provider value={{currentUser, setCurrentUser}}>
+      <PageWithSidebar>
+        <Sidebar rows={rows}/>
+        <AppRoutes/>
+      </PageWithSidebar>
+    </StorageContext.Provider>
   );
 }
 
