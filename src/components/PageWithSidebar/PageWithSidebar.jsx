@@ -1,12 +1,12 @@
-import {useState} from 'react';
 import s from './PageWithSidebar.module.css';
+import {useSelector} from 'react-redux';
 
 export const PageWithSidebar = (props) => {
   const {
     children,
   } = props;
 
-  const [token, setToken] = useState('');
+  const token = useSelector((state) => state.auth.token);
 
   if (!token) return children;
   return (

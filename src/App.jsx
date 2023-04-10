@@ -1,5 +1,4 @@
 import './App.css';
-import {useState} from 'react';
 import {BiBookOpen, BiHomeAlt} from 'react-icons/bi';
 import {BsCalendarDay} from 'react-icons/bs';
 import {CgProfile} from 'react-icons/cg';
@@ -9,7 +8,12 @@ import {
 } from './components/PageWithSidebar/PageWithSidebar.jsx';
 import {Sidebar} from './components/Sidebar/Sidebar.jsx';
 import {AppRoutes} from './routes/AppRoutes.jsx';
+import {store} from './store/store.js';
+import {Provider} from 'react-redux';
 
+/*
+  Todo: move to AppRoutes
+ */
 const rows = [
   {
     label: 'Профиль',
@@ -40,10 +44,12 @@ const rows = [
 
 function App() {
   return (
-    <PageWithSidebar>
-      <Sidebar rows={rows}/>
-      <AppRoutes/>
-    </PageWithSidebar>
+    <Provider store={store}>
+      <PageWithSidebar>
+        <Sidebar rows={rows}/>
+        <AppRoutes/>
+      </PageWithSidebar>
+    </Provider>
   );
 }
 

@@ -1,17 +1,18 @@
-import axios from 'axios';
-
-const API_URL = 'https://a529-77-245-104-174.in.ngrok.io/api/auth';
+import {instance} from './interceptor.js';
 
 const login = (barcode, password) => {
-  return axios
-      .post(API_URL + '/sign-in', {
-        barcode,
-        password,
-      });
+  const url = '/api/auth/sign-in';
+  return instance.post(url, {barcode, password}, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'mode': 'cors',
+    },
+  });
 };
 
 const logout = (id) => {
-  return axios.delete(API_URL + `/logout?userId=${id}`);
+  return instance.delete(`/api/auth/logout?userId=${id}`);
 };
 
 export {login, logout};

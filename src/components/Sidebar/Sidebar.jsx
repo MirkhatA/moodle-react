@@ -1,15 +1,14 @@
-import {useState} from 'react';
 import {HiOutlineLogout} from 'react-icons/hi';
 import {NavLink} from 'react-router-dom';
 import logo from '../../assets/img/logo.png';
 import s from './Sidebar.module.css';
+import {useSelector} from 'react-redux';
 
 export const Sidebar = (props) => {
   const {
-    rows = [],
   } = props;
 
-  const [token, setToken] = useState('');
+  const token = useSelector((state) => state.auth.token);
 
   if (!token) return null;
   return (

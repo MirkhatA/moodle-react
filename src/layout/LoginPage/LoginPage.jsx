@@ -1,21 +1,20 @@
-import {useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-
+import {useState} from 'react';
 import logo from '../../assets/img/logo.png';
 import Input from '../../components/ui/Input/Input';
 import {Button} from '../../components/ui/Button/Button';
-import authStore from '../../store/authStore.js';
 import {login} from '../../services/authService.js';
 
 import s from './LoginPage.module.css';
-import {setUser} from '../../services/tokenService.js';
+import {useDispatch} from 'react-redux';
+import {setToken} from '../../store/reducers/authReducer.js';
 
 export const LoginPage = () => {
   const [barcode, setBarcode] = useState(null);
   const [password, setPassword] = useState('');
   const [isChecked, setIsChecked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onChangeBarcode = (e) => {
     setBarcode(e.target.value);
@@ -27,38 +26,21 @@ export const LoginPage = () => {
     setIsChecked(e.target.value);
   }
 
-  useEffect(() => {
-    function clearLocalStorage() {
-      localStorage.removeItem('session');
-    }
-
-    window.addEventListener('beforeunload', clearLocalStorage);
-    return () => {
-      window.removeEventListener('beforeunload', clearLocalStorage);
-    };
-  }, []);
-
   const handleOnSubmit = async (e) => {
+    setIsLoading(true);
+
     e.preventDefault();
     try {
-      const res = await login(barcode, password);
-      console.log(res);
-      setTimeout(() => {
-        if (res.data.accessToken) {
-          setBarcode('');
-          setPassword('');
-          setUser(res.data);
-        }
-        if (res.data.role === 'ROLE_STUDENT') {
-          authStore.setMessage('Успешная авторизация роль студента');
-          navigate('/');
-        } else if (res.data.role === 'ROLE_TEACHER') {
-          authStore.setMessage('Успешная авторизация роль учителя');
-          navigate('/');
-        }
-      }, 1000);
+      login(barcode, password)
+          .then((res) => {
+            dispatch(setToken({token: res.data.accessToken}));
+          })
+          .finally(() => {
+            setIsLoading(false);
+          });
     } catch (error) {
-      authStore.setMessage('Неправильный логин или пароль');
+      console.log(error);
+      setIsLoading(false);
     }
   };
 
@@ -78,9 +60,9 @@ export const LoginPage = () => {
             </div>
           </div>
 
-          <div>
-            {authStore.message}
-          </div>
+          {/* <div> */}
+          {/*   {authStore.message} */}
+          {/* </div> */}
 
           <form className={s.loginForm} onSubmit={handleOnSubmit}>
             <h2>Авторизация</h2>
@@ -109,7 +91,7 @@ export const LoginPage = () => {
             </div>
 
             <div className={s.buttonGroup}>
-              <Button>Войти</Button>
+              <Button disabled={isLoading}>Войти</Button>
             </div>
           </form>
         </div>
