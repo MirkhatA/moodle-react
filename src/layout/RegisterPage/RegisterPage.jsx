@@ -2,8 +2,12 @@ import s from './RegisterPage.module.css';
 import {Button} from '../../components/ui/Button/Button';
 import Input from '../../components/ui/Input/Input';
 import logo from '../../assets/img/logo.png';
+import {useContext} from 'react';
+import {StorageContext} from '../../App.jsx';
+
 
 export const RegisterPage = () => {
+  const {currentUser, setCurrentUser} = useContext(StorageContext);
   return (
     <div className={s.bgRegister}>
       <div className={s.registerSideBar}>

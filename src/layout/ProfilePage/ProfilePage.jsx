@@ -1,10 +1,13 @@
-import {useState} from 'react';
+import {useContext, useState} from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import {NavLink} from 'react-router-dom';
 import s from './ProfilePage.module.css';
+import {StorageContext} from '../../App.jsx';
+
 
 export const ProfilePage = () => {
+  const {currentUser, setCurrentUser} = useContext(StorageContext);
   const user = {
     fullname: 'Асен Мирхат Маратулы',
     login: 'e@example.com',
